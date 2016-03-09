@@ -133,8 +133,8 @@ static void run_login_script(struct passwd *pw, char *full_tty)
 		t_argv[1] = NULL;
 		xsetenv("LOGIN_TTY", full_tty);
 		xsetenv("LOGIN_USER", pw->pw_name);
-		xsetenv("LOGIN_UID", utoa(pw->pw_uid));
-		xsetenv("LOGIN_GID", utoa(pw->pw_gid));
+		xsetenv("LOGIN_UID", bb_utoa(pw->pw_uid));
+		xsetenv("LOGIN_GID", bb_utoa(pw->pw_gid));
 		xsetenv("LOGIN_SHELL", pw->pw_shell);
 		spawn_and_wait(t_argv); /* NOMMU-friendly */
 		unsetenv("LOGIN_TTY");

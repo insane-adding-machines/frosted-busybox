@@ -534,10 +534,6 @@ static int binop(void)
 
 		if (stat(opnd1, &b1) || stat(opnd2, &b2))
 			return 0; /* false, since at least one stat failed */
-		if (op->op_num == FILNT)
-			return b1.st_mtime > b2.st_mtime;
-		if (op->op_num == FILOT)
-			return b1.st_mtime < b2.st_mtime;
 		/*if (op->op_num == FILEQ)*/
 		return b1.st_dev == b2.st_dev && b1.st_ino == b2.st_ino;
 	}

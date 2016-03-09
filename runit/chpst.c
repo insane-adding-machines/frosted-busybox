@@ -412,8 +412,8 @@ int chpst_main(int argc UNUSED_PARAM, char **argv)
 	// OTOH chroot fails for non-roots.
 	// Solution: cache uid/gid before chroot, apply uid/gid after.
 	if (opt & OPT_U) {
-		xsetenv("GID", utoa(ugid.gid));
-		xsetenv("UID", utoa(ugid.uid));
+		xsetenv("GID", bb_utoa(ugid.gid));
+		xsetenv("UID", bb_utoa(ugid.uid));
 	}
 
 	if (opt & OPT_root) {

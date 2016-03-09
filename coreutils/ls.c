@@ -335,7 +335,7 @@ struct dnode {
 	time_t    dn_ctime;
 #endif
 	ino_t     dn_ino;
-	blkcnt_t  dn_blocks;
+	int         dn_blocks;
 	nlink_t   dn_nlink;
 	uid_t     dn_uid;
 	gid_t     dn_gid;
@@ -751,11 +751,6 @@ static struct dnode *my_stat(const char *fullname, const char *name, int force_f
 	/* cur->dstat = statbuf: */
 	cur->dn_mode   = statbuf.st_mode  ;
 	cur->dn_size   = statbuf.st_size  ;
-#if ENABLE_FEATURE_LS_TIMESTAMPS || ENABLE_FEATURE_LS_SORTFILES
-	cur->dn_atime  = statbuf.st_atime ;
-	cur->dn_mtime  = statbuf.st_mtime ;
-	cur->dn_ctime  = statbuf.st_ctime ;
-#endif
 	cur->dn_ino    = statbuf.st_ino   ;
 	cur->dn_blocks = statbuf.st_blocks;
 	cur->dn_nlink  = statbuf.st_nlink ;

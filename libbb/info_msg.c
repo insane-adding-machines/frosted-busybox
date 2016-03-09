@@ -9,7 +9,6 @@
 
 #include "libbb.h"
 #if ENABLE_FEATURE_SYSLOG
-# include <syslog.h>
 #endif
 
 void FAST_FUNC bb_info_msg(const char *s, ...)
@@ -26,7 +25,7 @@ void FAST_FUNC bb_info_msg(const char *s, ...)
 		vprintf(s, p);
 		fputs(msg_eol, stdout);
 	}
-# if ENABLE_FEATURE_SYSLOG
+# if 0 
 	if (logmode & LOGMODE_SYSLOG)
 		vsyslog(LOG_INFO, s, p2);
 # endif
@@ -46,7 +45,7 @@ void FAST_FUNC bb_info_msg(const char *s, ...)
 	if (used < 0)
 		return;
 
-# if ENABLE_FEATURE_SYSLOG
+# if 0
 	if (logmode & LOGMODE_SYSLOG)
 		syslog(LOG_INFO, "%s", msg);
 # endif

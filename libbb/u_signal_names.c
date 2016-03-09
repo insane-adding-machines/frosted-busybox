@@ -206,6 +206,8 @@ int FAST_FUNC get_signum(const char *name)
 
 // Convert signal number to name
 
+const char NO_SIGNAL_NAME[]="(???)";
+
 const char* FAST_FUNC get_signame(int number)
 {
 	if ((unsigned)number < ARRAY_SIZE(signals)) {
@@ -213,7 +215,7 @@ const char* FAST_FUNC get_signame(int number)
 			return signals[number];
 	}
 
-	return itoa(number);
+	return NO_SIGNAL_NAME;
 }
 
 

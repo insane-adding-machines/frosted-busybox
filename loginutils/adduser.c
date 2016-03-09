@@ -65,7 +65,7 @@ static void passwd_study(struct passwd *p)
 	while (getpwuid(p->pw_uid) || (p->pw_gid == (gid_t)-1 && getgrgid(p->pw_uid))) {
 		if (option_mask32 & OPT_UID) {
 			/* -u N, cannot pick uid other than N: error */
-			bb_error_msg_and_die("%s '%s' in use", "uid", itoa(p->pw_uid));
+			bb_error_msg_and_die("%s '%s' in use", "uid", bb_itoa(p->pw_uid));
 			/* this format string is reused in adduser and addgroup */
 		}
 		if (p->pw_uid == max) {
@@ -108,7 +108,7 @@ static int addgroup_wrapper(struct passwd *p, const char *group_name)
 		/* Breaks if system in fact does NOT use busybox addgroup */
 		argv[1] = (char*)"-g";
 #endif
-		argv[2] = utoa(p->pw_gid);
+		argv[2] = bb_utoa(p->pw_gid);
 		argv[3] = (char*)"--";
 		argv[4] = p->pw_name;
 		argv[5] = NULL;

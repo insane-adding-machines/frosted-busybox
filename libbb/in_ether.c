@@ -8,9 +8,7 @@
 //kbuild:lib-$(CONFIG_IFENSLAVE) += in_ether.o
 
 #include "libbb.h"
-#include <net/if_arp.h>
-#include <net/ethernet.h>
-
+#if 0
 /* Convert Ethernet address from "XX[:]XX[:]XX[:]XX[:]XX[:]XX" to sockaddr.
  * Return nonzero on error.
  */
@@ -56,3 +54,4 @@ int FAST_FUNC in_ether(const char *bufp, struct sockaddr *sap)
 	/* Error if we aren't at end of string */
 	return *bufp;
 }
+#endif

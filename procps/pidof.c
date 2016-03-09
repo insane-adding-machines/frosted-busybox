@@ -68,7 +68,7 @@ int pidof_main(int argc UNUSED_PARAM, char **argv)
 			if (!omits_p)
 				break;
 			/* are we asked to exclude the parent's process ID?  */
-			omits_p->data = utoa((unsigned)getppid());
+			omits_p->data = bb_utoa((unsigned)getppid());
 		}
 	}
 #endif

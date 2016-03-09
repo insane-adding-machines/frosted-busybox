@@ -49,15 +49,7 @@
 #include "libbb.h"
 #include "inet_common.h"
 #include <net/if.h>
-#include <net/if_arp.h>
 #include <netinet/in.h>
-#ifdef HAVE_NET_ETHERNET_H
-# include <net/ethernet.h>
-#endif
-
-#if ENABLE_FEATURE_IFCONFIG_SLIP
-# include <linux/if_slip.h>
-#endif
 
 /* I don't know if this is needed for busybox or not.  Anyone? */
 #define QUESTIONABLE_ALIAS_CASE

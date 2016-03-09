@@ -464,11 +464,11 @@ struct group* FAST_FUNC getgrnam(const char *name)
 }
 struct passwd* FAST_FUNC getpwuid(uid_t id)
 {
-	return getXXnam(utoa(id), (0 << 2) + 2);
+	return getXXnam(bb_utoa(id), (0 << 2) + 2);
 }
 struct group* FAST_FUNC getgrgid(gid_t id)
 {
-	return getXXnam(utoa(id), (1 << 2) + 2);
+	return getXXnam(bb_utoa(id), (1 << 2) + 2);
 }
 
 /****** end/setXXend */

@@ -39,13 +39,13 @@
 #define basename dont_use_basename
 #include <poll.h>
 #include <sys/ioctl.h>
-#include <sys/mman.h>
+//#include <sys/mman.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #ifndef major
-# include <sys/sysmacros.h>
+//# include <sys/sysmacros.h>
 #endif
 #include <sys/wait.h>
 #include <termios.h>
@@ -69,7 +69,7 @@
 # include <mntent.h>
 #endif
 #ifdef HAVE_SYS_STATFS_H
-# include <sys/statfs.h>
+//# include <sys/statfs.h>
 #endif
 /* Don't do this here:
  * #include <sys/sysinfo.h>
@@ -862,8 +862,8 @@ char *safe_gethostname(void) FAST_FUNC;
 /* Convert each alpha char in str to lower-case */
 char* str_tolower(char *str) FAST_FUNC;
 
-char *utoa(unsigned n) FAST_FUNC;
-char *itoa(int n) FAST_FUNC;
+char *bb_utoa(unsigned n) FAST_FUNC;
+char *bb_itoa(int n) FAST_FUNC;
 /* Returns a pointer past the formatted number, does NOT null-terminate */
 char *utoa_to_buf(unsigned n, char *buf, unsigned buflen) FAST_FUNC;
 char *itoa_to_buf(int n, char *buf, unsigned buflen) FAST_FUNC;

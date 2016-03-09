@@ -339,23 +339,6 @@ static void FAST_FUNC print_stat(char *pformat, const char m,
 	} else if (m == 'o') {
 		strcat(pformat, "lu");
 		printf(pformat, (unsigned long) statbuf->st_blksize);
-	} else if (m == 'x') {
-		printfs(pformat, human_time(statbuf->st_atime));
-	} else if (m == 'X') {
-		strcat(pformat, TYPE_SIGNED(time_t) ? "ld" : "lu");
-		/* note: (unsigned long) would be wrong:
-		 * imagine (unsigned long64)int32 */
-		printf(pformat, (long) statbuf->st_atime);
-	} else if (m == 'y') {
-		printfs(pformat, human_time(statbuf->st_mtime));
-	} else if (m == 'Y') {
-		strcat(pformat, TYPE_SIGNED(time_t) ? "ld" : "lu");
-		printf(pformat, (long) statbuf->st_mtime);
-	} else if (m == 'z') {
-		printfs(pformat, human_time(statbuf->st_ctime));
-	} else if (m == 'Z') {
-		strcat(pformat, TYPE_SIGNED(time_t) ? "ld" : "lu");
-		printf(pformat, (long) statbuf->st_ctime);
 # if ENABLE_SELINUX
 	} else if (m == 'C' && (option_mask32 & OPT_SELINUX)) {
 		printfs(pformat, scontext);
@@ -635,7 +618,7 @@ static bool do_stat(const char *filename, const char *format)
 	print_it(format, filename, print_stat, &statbuf IF_SELINUX(, scontext));
 #else	/* FEATURE_STAT_FORMAT */
 	if (option_mask32 & OPT_TERSE) {
-		printf("%s %llu %llu %lx %lu %lu %llx %llu %lu %lx %lx %lu %lu %lu %lu"
+		printf("%s %llu %llu %lx %lu %lu %llx %llu %lu %lx %lx %lu"
 		       IF_NOT_SELINUX("\n"),
 		       filename,
 		       (unsigned long long) statbuf.st_size,
@@ -648,9 +631,6 @@ static bool do_stat(const char *filename, const char *format)
 		       (unsigned long) statbuf.st_nlink,
 		       (unsigned long) major(statbuf.st_rdev),
 		       (unsigned long) minor(statbuf.st_rdev),
-		       (unsigned long) statbuf.st_atime,
-		       (unsigned long) statbuf.st_mtime,
-		       (unsigned long) statbuf.st_ctime,
 		       (unsigned long) statbuf.st_blksize
 		);
 # if ENABLE_SELINUX
@@ -703,9 +683,6 @@ static bool do_stat(const char *filename, const char *format)
 		if (option_mask32 & OPT_SELINUX)
 			printf("   S_Context: %s\n", scontext);
 # endif
-		printf("Access: %s\n", human_time(statbuf.st_atime));
-		printf("Modify: %s\n", human_time(statbuf.st_mtime));
-		printf("Change: %s\n", human_time(statbuf.st_ctime));
 	}
 #endif  /* FEATURE_STAT_FORMAT */
 	return 1;

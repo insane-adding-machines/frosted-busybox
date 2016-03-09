@@ -381,7 +381,7 @@ int runsvdir_main(int argc UNUSED_PARAM, char **argv)
 			pid_t pid;
 
 			/* Single parameter: signal# */
-			opt_s_argv[1] = utoa(sig);
+			opt_s_argv[1] = bb_utoa(sig);
 			pid = spawn(opt_s_argv);
 			if (pid > 0) {
 				/* Remembering to wait for _any_ children,

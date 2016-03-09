@@ -323,7 +323,7 @@ static void startservice(struct svdir *s)
 		}
 		//arg[2] = "0";
 		//if (WIFSIGNALED(s->wstat)) {
-			arg[2] = utoa(WTERMSIG(s->wstat));
+			arg[2] = bb_utoa(WTERMSIG(s->wstat));
 		//}
 		arg[3] = NULL;
 	} else {

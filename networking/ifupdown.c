@@ -304,7 +304,7 @@ static char *parse(const char *command, struct interface_defn_t *ifd)
 						if (varvalue) {
 							res = count_netmask_bits(varvalue);
 							if (res > 0) {
-								const char *argument = utoa(res);
+								const char *argument = bb_utoa(res);
 								addstr(&result, argument, strlen(argument));
 								command = nextpercent + 1;
 								break;

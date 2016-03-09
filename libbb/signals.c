@@ -105,7 +105,7 @@ void FAST_FUNC signal_SA_RESTART_empty_mask(int sig, void (*handler)(int))
 	struct sigaction sa;
 	memset(&sa, 0, sizeof(sa));
 	/*sigemptyset(&sa.sa_mask);*/
-	sa.sa_flags = SA_RESTART;
+	//sa.sa_flags = SA_RESTART;
 	sa.sa_handler = handler;
 	sigaction_set(sig, &sa);
 }

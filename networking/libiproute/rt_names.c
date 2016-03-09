@@ -104,14 +104,14 @@ static void rtnl_rtprot_initialize(void)
 const char* FAST_FUNC rtnl_rtprot_n2a(int id)
 {
 	if (id < 0 || id > RT_TABLE_MAX) {
-		return itoa(id);
+		return bb_itoa(id);
 	}
 
 	rtnl_rtprot_initialize();
 
 	if (rtnl_rtprot_tab->tab[id])
 		return rtnl_rtprot_tab->tab[id];
-	return itoa(id);
+	return bb_itoa(id);
 }
 #endif
 
@@ -140,14 +140,14 @@ static void rtnl_rtscope_initialize(void)
 const char* FAST_FUNC rtnl_rtscope_n2a(int id)
 {
 	if (id < 0 || id > RT_TABLE_MAX) {
-		return itoa(id);
+		return bb_itoa(id);
 	}
 
 	rtnl_rtscope_initialize();
 
 	if (rtnl_rtscope_tab->tab[id])
 		return rtnl_rtscope_tab->tab[id];
-	return itoa(id);
+	return bb_itoa(id);
 }
 
 int FAST_FUNC rtnl_rtscope_a2n(uint32_t *id, char *arg)
@@ -177,14 +177,14 @@ int FAST_FUNC rtnl_rtrealm_a2n(uint32_t *id, char *arg)
 const char* FAST_FUNC rtnl_rtrealm_n2a(int id)
 {
 	if (id < 0 || id > RT_TABLE_MAX) {
-		return itoa(id);
+		return bb_itoa(id);
 	}
 
 	rtnl_rtrealm_initialize();
 
 	if (rtnl_rtrealm_tab->tab[id])
 		return rtnl_rtrealm_tab->tab[id];
-	return itoa(id);
+	return bb_itoa(id);
 }
 #endif
 
@@ -202,14 +202,14 @@ static void rtnl_rtdsfield_initialize(void)
 const char* FAST_FUNC rtnl_dsfield_n2a(int id)
 {
 	if (id < 0 || id > RT_TABLE_MAX) {
-		return itoa(id);
+		return bb_itoa(id);
 	}
 
 	rtnl_rtdsfield_initialize();
 
 	if (rtnl_rtdsfield_tab->tab[id])
 		return rtnl_rtdsfield_tab->tab[id];
-	return itoa(id);
+	return bb_itoa(id);
 }
 
 int FAST_FUNC rtnl_dsfield_a2n(uint32_t *id, char *arg)
@@ -238,14 +238,14 @@ static void rtnl_rttable_initialize(void)
 const char* FAST_FUNC rtnl_rttable_n2a(int id)
 {
 	if (id < 0 || id > RT_TABLE_MAX) {
-		return itoa(id);
+		return bb_itoa(id);
 	}
 
 	rtnl_rttable_initialize();
 
 	if (rtnl_rttable_tab->tab[id])
 		return rtnl_rttable_tab->tab[id];
-	return itoa(id);
+	return bb_itoa(id);
 }
 
 int FAST_FUNC rtnl_rttable_a2n(uint32_t *id, char *arg)

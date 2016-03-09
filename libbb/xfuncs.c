@@ -116,7 +116,7 @@ char* FAST_FUNC itoa_to_buf(int n, char *buf, unsigned buflen)
 static char local_buf[sizeof(int) * 3];
 
 /* Convert unsigned integer to ascii using a static buffer (returned). */
-char* FAST_FUNC utoa(unsigned n)
+char* FAST_FUNC bb_utoa(unsigned n)
 {
 	*(utoa_to_buf(n, local_buf, sizeof(local_buf) - 1)) = '\0';
 
@@ -124,7 +124,7 @@ char* FAST_FUNC utoa(unsigned n)
 }
 
 /* Convert signed integer to ascii using a static buffer (returned). */
-char* FAST_FUNC itoa(int n)
+char* FAST_FUNC bb_itoa(int n)
 {
 	*(itoa_to_buf(n, local_buf, sizeof(local_buf) - 1)) = '\0';
 

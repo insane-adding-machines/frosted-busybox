@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/socket.h> /* netinet/in.h needs it */
 #include <netinet/in.h>
+#include <sys/time.h>
 #include <net/if.h>
 #include <sys/un.h>
 #include "libbb.h"

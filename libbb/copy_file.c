@@ -376,7 +376,7 @@ int FAST_FUNC copy_file(const char *source, const char *dest, int flags)
 	) {
 		struct timeval times[2];
 
-		times[1].tv_sec = times[0].tv_sec = source_stat.st_mtime;
+		times[1].tv_sec = times[0].tv_sec = 0;
 		times[1].tv_usec = times[0].tv_usec = 0;
 		/* BTW, utimes sets usec-precision time - just FYI */
 		if (utimes(dest, times) < 0)

@@ -40,7 +40,7 @@ const char* FAST_FUNC rtnl_rtntype_n2a(int id)
 	case RTN_XRESOLVE:
 		return "xresolve";
 	default:
-		return itoa(id);
+		return bb_itoa(id);
 	}
 }
 

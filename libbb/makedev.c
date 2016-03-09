@@ -10,13 +10,7 @@
 #include "platform.h"
 
 /* Different Unixes want different headers for makedev */
-#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) \
- || defined(__APPLE__)
 # include <sys/types.h>
-#else
-# include <features.h>
-# include <sys/sysmacros.h>
-#endif
 
 #ifdef __GLIBC__
 /* At least glibc has horrendously large inline for this, so wrap it. */

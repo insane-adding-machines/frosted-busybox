@@ -525,7 +525,7 @@ int tcpudpsvd_main(int argc UNUSED_PARAM, char **argv)
 			//compat? xsetenv_proto(proto, "REMOTEINFO", "");
 			/* additional */
 			if (cur_per_host > 0) /* can not be true for udp */
-				xsetenv_plain("TCPCONCURRENCY", utoa(cur_per_host));
+				xsetenv_plain("TCPCONCURRENCY", bb_utoa(cur_per_host));
 		}
 		free(local_addr);
 		free(free_me0);
@@ -541,7 +541,7 @@ int tcpudpsvd_main(int argc UNUSED_PARAM, char **argv)
 	sig_unblock(SIGCHLD);
 
 #ifdef SSLSVD
-	strcpy(id, utoa(pid));
+	strcpy(id, bb_utoa(pid));
 	ssl_io(0, argv);
 	bb_perror_msg_and_die("can't execute '%s'", argv[0]);
 #else

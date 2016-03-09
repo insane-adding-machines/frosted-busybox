@@ -4622,10 +4622,10 @@ cmdtxt(union node *n)
 	case NFROMTO:
 		p = "<>";
  redir:
-		cmdputs(utoa(n->nfile.fd));
+		cmdputs(bb_utoa(n->nfile.fd));
 		cmdputs(p);
 		if (n->type == NTOFD || n->type == NFROMFD) {
-			cmdputs(utoa(n->ndup.dupfd));
+			cmdputs(bb_utoa(n->ndup.dupfd));
 			break;
 		}
 		n = n->nfile.fname;
@@ -5557,7 +5557,7 @@ static struct ifsregion *ifslastp;
 static struct arglist exparg;
 
 /*
- * Our own itoa().
+ * Our own bb_itoa().
  */
 #if !ENABLE_SH_MATH_SUPPORT
 /* cvtnum() is used even if math support is off (to prepare $? values and such) */
@@ -10329,7 +10329,7 @@ change_random(const char *value)
 		/* "get", generate */
 		t = next_random(&random_gen);
 		/* set without recursion */
-		setvar(vrandom.var_text, utoa(t), VNOFUNC);
+		setvar(vrandom.var_text, bb_utoa(t), VNOFUNC);
 		vrandom.flags &= ~VNOFUNC;
 	} else {
 		/* set/reset */
@@ -10416,7 +10416,7 @@ getopts(char *optstr, char *optvar, char **optfirst, int *param_optind, int *opt
  out:
 	*optoff = p ? p - *(optnext - 1) : -1;
 	*param_optind = optnext - optfirst + 1;
-	err |= setvarsafe("OPTIND", itoa(*param_optind), VNOFUNC);
+	err |= setvarsafe("OPTIND", bb_itoa(*param_optind), VNOFUNC);
 	sbuf[0] = c;
 	/*sbuf[1] = '\0'; - already is */
 	err |= setvarsafe(optvar, sbuf, 0);
@@ -12939,10 +12939,10 @@ init(void)
 			}
 		}
 
-		setvar0("PPID", utoa(getppid()));
+		setvar0("PPID", bb_utoa(getppid()));
 #if ENABLE_ASH_BASH_COMPAT
 		p = lookupvar("SHLVL");
-		setvar("SHLVL", utoa((p ? atoi(p) : 0) + 1), VEXPORT);
+		setvar("SHLVL", bb_utoa((p ? atoi(p) : 0) + 1), VEXPORT);
 		if (!lookupvar("HOSTNAME")) {
 			struct utsname uts;
 			uname(&uts);

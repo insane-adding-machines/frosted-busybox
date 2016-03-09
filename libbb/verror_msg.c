@@ -7,11 +7,11 @@
  * Licensed under GPLv2 or later, see file LICENSE in this source tree.
  */
 #include "libbb.h"
-#if ENABLE_FEATURE_SYSLOG
+#if 0
 # include <syslog.h>
 #endif
 
-#if ENABLE_FEATURE_SYSLOG
+#if 0
 smallint syslog_level = LOG_ERR;
 #endif
 smallint logmode = LOGMODE_STDIO;
@@ -71,7 +71,7 @@ void FAST_FUNC bb_verror_msg(const char *s, va_list p, const char* strerr)
 		fflush_all();
 		full_write(STDERR_FILENO, msg, used);
 	}
-#if ENABLE_FEATURE_SYSLOG
+#if 0
 	if (logmode & LOGMODE_SYSLOG) {
 		syslog(syslog_level, "%s", msg + applet_len);
 	}
@@ -131,7 +131,7 @@ void FAST_FUNC bb_verror_msg(const char *s, va_list p, const char* strerr)
 		fflush_all();
 		writev(STDERR_FILENO, iov, 3);
 	}
-# if ENABLE_FEATURE_SYSLOG
+# if 0
 	if (logmode & LOGMODE_SYSLOG) {
 		syslog(LOG_ERR, "%s", msgc);
 	}

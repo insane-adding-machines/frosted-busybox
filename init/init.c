@@ -111,7 +111,6 @@
 #define DEBUG_SEGV_HANDLER 0
 
 #include "libbb.h"
-#include <syslog.h>
 #include <paths.h>
 #include <sys/resource.h>
 #ifdef __linux__

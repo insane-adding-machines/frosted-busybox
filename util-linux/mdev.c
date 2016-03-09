@@ -937,7 +937,7 @@ static void open_mdev_log(const char *seq, unsigned my_pid)
 	if (logfd >= 0) {
 		xmove_fd(logfd, STDERR_FILENO);
 		G.verbose = 2;
-		applet_name = xasprintf("%s[%s]", applet_name, seq ? seq : utoa(my_pid));
+		applet_name = xasprintf("%s[%s]", applet_name, seq ? seq : bb_utoa(my_pid));
 	}
 }
 
@@ -980,7 +980,7 @@ wait_for_seqfile(unsigned expected_seq)
 		seqbuf[seqlen] = '\0';
 		if (seqbuf[0] == '\n' || seqbuf[0] == '\0') {
 			/* seed file: write out seq ASAP */
-			xwrite_str(seq_fd, utoa(expected_seq));
+			xwrite_str(seq_fd, bb_utoa(expected_seq));
 			xlseek(seq_fd, 0, SEEK_SET);
 			dbg2("first seq written");
 			break;
@@ -1143,7 +1143,7 @@ int mdev_main(int argc UNUSED_PARAM, char **argv)
 
 		dbg1("%s exiting", curtime());
 		if (seq_fd >= 0) {
-			xwrite_str(seq_fd, utoa(seqnum + 1));
+			xwrite_str(seq_fd, bb_utoa(seqnum + 1));
 			signal_mdevs(my_pid);
 		}
 	}

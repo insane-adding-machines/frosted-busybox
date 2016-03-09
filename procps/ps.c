@@ -767,7 +767,7 @@ int ps_main(int argc UNUSED_PARAM, char **argv UNUSED_PARAM)
 				}
 				else
 					endp = tty + sprintf(tty, "%d:", p->tty_major);
-				strcpy(endp, utoa(p->tty_minor));
+				strcpy(endp, bb_utoa(p->tty_minor));
 
 				strftime(stime_str, 6, (elapsed >= (24 * 60 * 60)) ? "%b%d" : "%H:%M", tm);
 				stime_str[5] = '\0';

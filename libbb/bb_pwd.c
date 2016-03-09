@@ -75,13 +75,13 @@ char* FAST_FUNC gid2group(gid_t gid)
 char* FAST_FUNC uid2uname_utoa(uid_t uid)
 {
 	char *name = uid2uname(uid);
-	return (name) ? name : utoa(uid);
+	return (name) ? name : bb_utoa(uid);
 }
 
 char* FAST_FUNC gid2group_utoa(gid_t gid)
 {
 	char *name = gid2group(gid);
-	return (name) ? name : utoa(gid);
+	return (name) ? name : bb_utoa(gid);
 }
 
 long FAST_FUNC xuname2uid(const char *name)

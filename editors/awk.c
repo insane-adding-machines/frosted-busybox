@@ -879,7 +879,7 @@ static void setari_u(var *a, int idx, const char *s)
 {
 	var *v;
 
-	v = findvar(iamarray(a), itoa(idx));
+	v = findvar(iamarray(a), bb_itoa(idx));
 	setvar_u(v, s);
 }
 

@@ -478,7 +478,7 @@ static void display_cpus(int scr_width, char *scrbuf, int *lines_rem_p)
 				/* Barely fits in 79 chars when in "decimals" mode. */
 # if ENABLE_FEATURE_TOP_SMP_CPU
 				"CPU%s:"FMT"usr"FMT"sys"FMT"nic"FMT"idle"FMT"io"FMT"irq"FMT"sirq",
-				(smp_cpu_info ? utoa(i) : ""),
+				(smp_cpu_info ? bb_utoa(i) : ""),
 # else
 				"CPU:"FMT"usr"FMT"sys"FMT"nic"FMT"idle"FMT"io"FMT"irq"FMT"sirq",
 # endif

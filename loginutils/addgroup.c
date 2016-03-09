@@ -58,7 +58,7 @@ static void xgroup_study(struct group *g)
 		}
 		if (option_mask32 & OPT_GID) {
 			/* -g N, cannot pick gid other than N: error */
-			bb_error_msg_and_die("%s '%s' in use", "gid", itoa(g->gr_gid));
+			bb_error_msg_and_die("%s '%s' in use", "gid", bb_itoa(g->gr_gid));
 			/* this format strings is reused in adduser and addgroup */
 		}
 		if (g->gr_gid == max) {

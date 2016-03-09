@@ -34,9 +34,6 @@
 #include "libbb.h"
 #include "inet_common.h"
 #include <net/if.h>
-#include <net/if_arp.h>
-#ifdef HAVE_NET_ETHERNET_H
-# include <net/ethernet.h>
 #endif
 
 #if ENABLE_FEATURE_HWIB

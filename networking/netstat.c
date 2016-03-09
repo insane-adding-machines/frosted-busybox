@@ -361,7 +361,7 @@ static const char *get_sname(int port, const char *proto, int numeric)
 			return se->s_name;
 	}
 	/* hummm, we may return static buffer here!! */
-	return itoa(ntohs(port));
+	return bb_itoa(ntohs(port));
 }
 
 static char *ip_port_str(struct sockaddr *addr, int port, const char *proto, int numeric)
@@ -511,7 +511,7 @@ static int FAST_FUNC raw_do_one(char *line)
 		return 1;
 
 	have_remaddr = NOT_NULL_ADDR(param.remaddr);
-	print_inet_line(&param, itoa(param.state), "raw", have_remaddr);
+	print_inet_line(&param, bb_itoa(param.state), "raw", have_remaddr);
 	return 0;
 }
 
